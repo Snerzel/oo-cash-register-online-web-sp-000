@@ -16,14 +16,14 @@ class CashRegister
       end
         self.last_transaction = amount * quantity
     end
-  def apply_discount()
-    if @discount > 0
-      @discount = discount / 100.to_f
-      @total = @total - (@total * (@discount))
-      "After the discount, the total comes to $#{@total.to_i}."
-    else "There is no discount to apply."
+    def apply_discount
+      if discount != 0
+        self.total = (total * ((100.0 - discount.to_f)/100)).to_i
+        "After the discount, the total comes to $#{self.total}."
+      else
+        "There is no discount to apply."
+      end
     end
-  end
   def void_last_transaction()
     @total -= last_transaction_amount
   end
